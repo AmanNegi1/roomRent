@@ -1,0 +1,120 @@
+
+<html>
+<head>
+<base href='http://vikku.info/programming/' />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="content-language" content="en" />
+
+<title>Please fill</title>
+<meta name="keywords" content="geographic names, geonames hierarchy, world places list, world places hierarchy, list of country, list of city, list of state, geonames country/state/city list, geographical names list, geographical hierarchy, gennames hierarchy, geonames list, geoinformation, scripting world places" />
+<meta name="description" content="Get a hierarchy of country, state, city using geonames database. List by country and then list by state and then list all cities using geonames database. Get all places(geoinformation) using this code." />
+
+<meta property="fb:app_id" content=""/>
+<meta property='og:title' content='Get Country State City Hierarchy - Get list of country, state, city using GeoNames' />
+<meta property='og:site_name' content='' />
+<meta property='og:url' content='' />
+<meta property='og:type' content='article' />
+<meta property='og:image' content='' />
+<meta property='og:description' content="Get a hierarchy of country, state, city using geonames database. List by country and then list by state and then list all cities using geonames database. Get all places(geoinformation) using this code." />
+<meta property="fb:admin" content="" />
+<meta property="fb:app_id" content="" />
+
+<meta itemprop="name" content="Get Country State City Hierarchy - Get list of country, state, city using GeoNames" />
+<meta itemprop="description" content="Get a hierarchy of country, state, city using geonames database. List by country and then list by state and then list all cities using geonames database. Get all places(geoinformation) using this code." />
+<meta itemprop="image" content="" />
+
+<link rel='stylesheet' type='text/css' href='formapi.css'></link>
+<script type="text/javascript" src="info2010.js"></script>
+<script type="text/javascript" src="jsfunction.js"></script>
+<script type="text/javascript" src="jsphpfun.js"></script>
+<link type="text/css" rel="stylesheet" href="corecss.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+<body>
+
+<div class='main'>
+<style type="text/css">
+.contents { background-color:#EDF4F8; padding:10px; border:2px dashed #C2DAE7; width: 70%; margin: 0 auto; }
+.contents p span { display:block;float:left; margin-left:0px; width:110px; color:gray; font-weight:bold;}
+.contents p select {float:left; margin-left:90px;}
+.contents p {clear:both;overflow:hidden;}
+</style>
+
+<script type="text/javascript" src="js/geodata-jsr-class.js"></script>
+
+<h1>Please Enter The following Information</h1>
+
+
+
+<div class="contents">
+
+<p><span>Continent:</span> <select name="continent" id="continent" onchange="getplaces(this.value,'country');">
+<option value=""></option>						
+</select>
+</p>
+
+<p><span>Country:</span> <select name="country" id="country" onchange="getplaces(this.value,'province');">
+<option value=""></option>						
+</select>
+</p>
+
+<p><span>State / Provice:</span> <select name="province" id="province" onchange="getplaces(this.value,'region')">
+<option value=""></option>
+</select>
+</p>
+
+<p><span>County / Region:</span> <select name="region" id="region" onchange="getplaces(this.value,'city')">
+<option value=""></option>
+</select>
+</p>
+
+<p><span>City:</span> <select name="city" id="city">
+<option value=""></option></select>
+</p>
+</div>
+
+
+<script type="text/javascript">
+var whos=null;
+function getplaces(gid,src)
+{	
+	whos = src
+	
+//	var  request = "http://ws.geonames.org/childrenJSON?geonameId="+gid+"&callback=getLocation&style=long";
+	var request = "http://www.geonames.org/childrenJSON?geonameId="+gid+"&callback=listPlaces&style=long";
+	aObj = new JSONscriptRequest(request);
+	aObj.buildScriptTag();
+	aObj.addScriptTag();	
+}
+
+function listPlaces(jData)
+{
+	counts = jData.geonames.length<jData.totalResultsCount ? jData.geonames.length : jData.totalResultsCount
+	who = document.getElementById(whos)
+	who.options.length = 0;
+	
+	if(counts)who.options[who.options.length] = new Option('Select','')
+	else who.options[who.options.length] = new Option('No Data Available','NULL')
+			
+	for(var i=0;i<counts;i++)
+		who.options[who.options.length] = new Option(jData.geonames[i].name,jData.geonames[i].geonameId)
+
+	delete jData;
+	jData = null		
+}
+
+window.onload = function() { getplaces(6295630,'continent'); }
+</script>
+
+
+</div>
+<!-- end div main -->
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "d5d04ed8-04d1-4c39-9336-46d4c4ce9d65", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+<!-- Google Analytics -->
+
+</body>
+</html>

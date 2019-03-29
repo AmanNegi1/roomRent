@@ -1,0 +1,106 @@
+.navbar {
+    background: rgba(20, 190, 54, 0.71);
+    padding:12px;
+    font-size: 20px;    
+}
+.navbar a {
+    transition-property:letter-spacing;
+    transition-duration: 0.4s;
+    transition-timing-function: linear;
+}
+.navbar a:hover {
+    letter-spacing: 5px;
+}
+
+/*Header from here */
+header.masthead {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(8rem + 100px);
+  padding-bottom: 8rem;
+  background: linear-gradient(0deg, #2db40d 0%, #dde50d 100%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+header.masthead .masthead-content {
+  z-index: 1;
+  position: relative;
+}
+
+header.masthead .masthead-content .masthead-heading {
+  font-size: 4rem;
+}
+
+header.masthead .masthead-content .masthead-subheading {
+  font-size: 2rem;
+}
+.rounded-pill {
+    width:180px;
+    height:auto;
+    padding:15px;
+    border-radius:40px;
+    background:white;
+    color:green;
+    transition-property: background;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    font-size:20px;
+    font-weight:600;
+}
+.rounded-pill:hover {
+    background:rgba(0, 173, 0, 0.92);
+    color:white;
+    border:none;
+}
+@media(max-width:720px) {
+    header.masthead .masthead-content .masthead-heading {
+    font-size: 3rem;
+    }
+    header.masthead .masthead-content .masthead-subheading {
+    font-size: 1.6rem;
+    }
+    .rounded-pill {
+        width:160px;
+        padding:12px;
+    }
+}
+@media(max-width:420px) {
+    header.masthead .masthead-content .masthead-heading {
+    font-size: 2.5rem;
+    }
+    header.masthead .masthead-content .masthead-subheading {
+    font-size: 1.2rem;
+    }
+    .rounded-pill {
+        width:120px;
+        padding:8px;
+        font-size:15px
+    }
+    header.masthead {
+        padding-top:calc(4rem + 80px);
+        padding-bottom: 4rem
+    }
+}
+
+/*footer ...*/
+footer.fBlack {
+    background-color: #291f1f;
+    font-size:20px;
+    
+}
+
+/*..dashboard......*/
+.navbar .navbar-item {
+    text-decoration:none;
+    color:white;
+    padding-right: 12px;
+}
+.navbar .navbar-item:hover {
+    letter-spacing: 2px;
+}
+.navbar .navbar-brand img {
+    border-radius:6px;
+}
